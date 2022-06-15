@@ -1,5 +1,7 @@
 import requests
 from bs4 import BeautifulSoup as BS
+
+
 r = requests.get("https://mai.ru/education/studies/schedule/index.php?group=%D0%9C6%D0%9E-307%D0%91-19", verify = False)
 html = BS(r.text, 'html.parser')
 t = []
@@ -52,6 +54,7 @@ def get_week(wnum):
         day = day.replace('\n\n\n\n', '\n\n')
         week[i] = day
         #day = ''
+        
     print(week[0])
     return week
 #weekres = get_week(10)

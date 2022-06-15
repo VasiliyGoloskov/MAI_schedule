@@ -1,23 +1,22 @@
-import sys  # sys нужен для передачи argv в QApplication
-from PyQt5 import QtWidgets
+import sys                                                      # sys нужен для передачи argv в QApplication
+from PyQt5 import QtWidgets, QtCore, QtGui
+
 from PyQt5.QtWidgets import *
-from PyQt5 import QtCore, QtGui
 from PyQt5.QtGui import *
 from PyQt5.QtCore import  *
-import re
 
+import requests
 import gui
 import scripts
 
 class ExampleApp(QtWidgets.QMainWindow, gui.Ui_MainWindow):
     def __init__(self):
-        # Это здесь нужно для доступа к переменным, методам
-        # и т.д. в файле design.py
+        """Это здесь нужно для доступа к переменным, методам
+            и т.д. в файле design.py."""
+            
         super().__init__()
         self.setupUi(self)# Это нужно для инициализации нашего дизайна
         self.comboBox.currentIndexChanged.connect(self.test)
-
-        
 
     def test(self):
         self.listWidget.clear()
@@ -31,13 +30,10 @@ class ExampleApp(QtWidgets.QMainWindow, gui.Ui_MainWindow):
             self.listWidget.addItem(item)
 
 
-
-
-
-if __name__ == '__main__':  # Если мы запускаем файл напрямую, а не импортируем
-    app = QtWidgets.QApplication(sys.argv)  # Новый экземпляр QApplication
-    window = ExampleApp()  # Создаём объект класса ExampleApp
-    window.show()  # Показываем окно
-    app.exec_()  # и запускаем приложение
+if __name__ == '__main__':                                                  # Если мы запускаем файл напрямую, а не импортируем
+    app = QtWidgets.QApplication(sys.argv)                                  # Новый экземпляр QApplication
+    window = ExampleApp()                                                   # Создаём объект класса ExampleApp
+    window.show()                                                           # Показываем окно
+    app.exec_()                                                             # и запускаем приложение
     sys.exit(app.exec_())
 
